@@ -26,6 +26,7 @@ Map("n", "<leader>pf", "<cmd> Telescope find_files <CR>")
 Map("n", "<C-p>", "<cmd> Telescope git_files <CR>")
 Map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 Map("n", "<leader>ps", "<cmd> Telescope live_grep <CR>")
+Map("n", "<leader><S>", "<cmd> Telescope live_grep <CR>")
 Map("n", "<leader>o", "<cmd> Telescope buffers <CR>")
 Map("n", "<leader>h", "<cmd> Telescope help_tags <CR>")
 Map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>")
@@ -47,6 +48,10 @@ Map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 
 -- Undo tree
 Map('n', '<leader>u', vim.cmd.UndotreeToggle, {desc = 'Toggle undo tree'})
+
+-- GIT
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+
 
 -- Set the lsp keymaps
 local lsp_zero = require('lsp-zero')
