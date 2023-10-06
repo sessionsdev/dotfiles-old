@@ -6,6 +6,17 @@ function Map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+
+-- Move lines
+Map("v", "J", ":m '>+1<CR>gv=gv")
+Map("v", "K", ":m '<-2<CR>gv=gv")
+
+--scrolling
+Map("n", "<C-d>", "<C-d>zz")
+Map("n", "<C-u>", "<C-u>zz")
+Map("n", "n", "nzzzv")
+Map("n", "N", "Nzzzv")
+
 -- Copy to clipboard
 Map("v", "<leader>y", '"+y')
 Map("n", "<leader>Y", '"+yg_')
@@ -50,7 +61,7 @@ Map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 Map('n', '<leader>u', vim.cmd.UndotreeToggle, {desc = 'Toggle undo tree'})
 
 -- GIT
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+Map("n", "<leader>gs", vim.cmd.Git)
 
 
 -- Set the lsp keymaps

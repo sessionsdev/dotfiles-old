@@ -26,6 +26,9 @@ local function configTelescope()
                 --     -- your custom normal mode mappings
                 --   },
                 -- },
+                depth = false,
+                hidden = true,
+                prompt_path = true,
             },
             fzf = {
                 fuzzy = true,                   -- false will only do exact matching

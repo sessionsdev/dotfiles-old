@@ -1,5 +1,14 @@
 local opt = vim.opt
 
+
+
+
+--backsups
+opt.backup = false
+opt.swapfile = false
+opt.undofile = true
+opt.undodir = vim.fn.getenv("HOME") .. "/.nvim/undodir"
+
 -- line numbers
 opt.relativenumber = true
 opt.number = true
@@ -22,6 +31,7 @@ opt.incsearch = true
 
 -- cursorline
 opt.cursorline = true
+opt.guicursor = ""
 
 -- appearance
 opt.termguicolors = true
