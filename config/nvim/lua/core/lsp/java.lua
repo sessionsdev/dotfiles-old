@@ -1,5 +1,12 @@
 local java_cmds = vim.api.nvim_create_augroup('java_cmds', { clear = true })
 local cache_vars = {}
+local cmd_path = vim.fn.getenv("JAVA_19_PATH")
+
+-- Ensure cmd_path is a valid string
+if not cmd_path or cmd_path == "" then
+    print("Error: JAVA_19_PATH is not set or is empty!")
+    return
+end
 
 local root_files = {
     '.git',
@@ -169,7 +176,7 @@ local function jdtls_setup(event)
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
         -- 💀
-        '/usr/local/opt/openjdk@19/bin/java',
+        cmd_path,
 
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
