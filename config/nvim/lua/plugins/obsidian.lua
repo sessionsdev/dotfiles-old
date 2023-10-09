@@ -1,3 +1,5 @@
+local vault_path = vim.fn.getenv("OBSIDIAN_VAULT_PATH")
+
 return {
   "epwalsh/obsidian.nvim",
   --  lazy = true,
@@ -14,7 +16,7 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
-    dir = "~/Documents/arca", -- no need to call 'vim.fn.expand' here
+    dir = vault_path, -- no need to call 'vim.fn.expand' here
 
     open_notes_in = "hsplit",
     use_advanced_uri = true,

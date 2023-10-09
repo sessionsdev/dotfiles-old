@@ -2,12 +2,23 @@
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# Ensure $HOME/.config directory exists
+mkdir -p "$HOME/.config"
+
 symlink_file() {
     local source_file="$1"
     local target_file="$2"
 
-    # Check if a real file (not symlink) exists at the target location
-    if [ -f "$target_file" ] && [ ! -L "$target_file" ]; then
+    # If a symlink exists at the target location, remove it
+    if [ -L "$target_file" ]; then
+        rm "$target_file"
+        echo "Removed existing symlink $target_file"
+    # If a directory exists at the target location, back it up
+    elif [ -d "$target_file" ]; then
+        mv "$target_file" "$target_file.bak"
+        echo "Backed up existing directory $target_file to $target_file.bak"
+    # Check if a real file exists at the target location
+    elif [ -f "$target_file" ]; then
         mv "$target_file" "$target_file.bak"  # Rename it to a .bak version
         echo "Backed up existing $target_file to $target_file.bak"
     fi
@@ -16,6 +27,7 @@ symlink_file() {
     ln -sf "$source_file" "$target_file"
     echo "Symlinked $source_file to $target_file"
 }
+
 
 # Symlink .profile
 symlink_file "$DOTFILES_DIR/.profile" "$HOME/.profile"
@@ -34,6 +46,12 @@ symlink_file "$DOTFILES_DIR/.env" "$HOME/.env"
 
 # Symlink nvim config
 symlink_file "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
+
+# Symlink .tmux.conf
+symlink_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+
+# Symlink .gitconfig
+symlink_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
 # Add any other files or configurations you want to symlink
 
