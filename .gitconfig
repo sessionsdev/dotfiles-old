@@ -1,3 +1,15 @@
 [user]
-	email = jon@sessionsdev.com
-	name = Jon Sessions
+	name = Jonathan Sessions
+	email = jonathan.sessions@flashtalking.com
+[core]
+	excludesfile = /Users/jonathansessions/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

@@ -53,6 +53,9 @@ symlink_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 # Symlink .gitconfig
 symlink_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
+# Symlink .gitconfig
+symlink_file "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
+
 # Add any other files or configurations you want to symlink
 
 echo "Dotfiles setup complete!"
