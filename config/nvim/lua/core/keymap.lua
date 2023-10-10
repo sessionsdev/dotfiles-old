@@ -29,20 +29,18 @@ Map("n", "<leader>P", '"+P')
 Map("v", "<leader>p", '"+p')
 Map("v", "<leader>P", '"+P')
 
--- Project View
-Map("n", "<leader>pv", ":Ex<CR>")
 
 -- Telescope/Fuzzy Finder Maps
+Map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
 Map("n", "<leader>pf", "<cmd> Telescope find_files <CR>")
 Map("n", "<C-p>", "<cmd> Telescope git_files <CR>")
 Map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-Map("n", "<leader>ps", "<cmd> Telescope live_grep <CR>")
-Map("n", "<leader><S>", "<cmd> Telescope live_grep <CR>")
+Map("n", "<leader>fs", "<cmd> Telescope live_grep <CR>")
+Map("n", "<leader><leader>", "<cmd> Telescope live_grep <CR>")
 Map("n", "<leader>o", "<cmd> Telescope buffers <CR>")
-Map("n", "<leader>h", "<cmd> Telescope help_tags <CR>")
-Map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>")
+Map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
+Map("n", "<leader>of", "<cmd> Telescope oldfiles <CR>")
 Map("n", "<leader>km", "<cmd> Telescope keymaps <CR>")
-Map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
 
 -- Buffer nav
 Map("n", "<TAB>", ":bn<CR>")

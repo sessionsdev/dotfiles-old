@@ -48,3 +48,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.updatetime = 50
+
+-- netrw_banner
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
