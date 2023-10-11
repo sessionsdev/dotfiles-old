@@ -40,7 +40,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #### JAVA ####
-export JAVA_HOME=`/usr/libexec/java_home -v 12.0.2`
+# Try the macOS-specific command
+if command -v /usr/libexec/java_home &> /dev/null; then
+    JAVA_HOME_TRY=$(/usr/libexec/java_home -v 12.0.2 2>/dev/null)
+fi
+
+# If the above didn't work, try a common Linux path
+if [ -z "$JAVA_HOME_TRY" ] && [ -d "/usr/lib/jvm/java-12-openjdk-amd64" ]; then
+    JAVA_HOME_TRY="/usr/lib/jvm/java-12-openjdk-amd64"
+fi
+
+# If neither of the above worked, fall back to a default
+JAVA_HOME=${JAVA_HOME_TRY:-""}
+
+# Finally, export the value
+export JAVA_HOME
+
 
 #### VOX ####
 if [ -d "$GIT_HOME/voxsupFrontend2" ]; then
