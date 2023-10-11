@@ -1,6 +1,5 @@
 [user]
 	name = Jonathan Sessions
-	email = jonathan.sessions@flashtalking.com
 [core]
 	excludesfile = /Users/jonathansessions/.gitignore_global
 [difftool "sourcetree"]
@@ -13,3 +12,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true
