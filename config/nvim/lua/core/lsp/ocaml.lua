@@ -9,7 +9,7 @@ end
 
 lspconfig.ocamllsp.setup {
     cmd = { cmd_path },
-    root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
+    root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace", ".lsp-trigger"),
     filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
     log_level = vim.lsp.protocol.MessageType.Log,
     log_file = "/tmp/nvim-lsp.log",
