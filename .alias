@@ -1,3 +1,7 @@
 alias test-dots='echo test '
 alias ll='ls -lah'
 alias gs='git status'
+
+# MO macbook aliases
+alias vpn-off="sudo osascript -e 'tell application \"Viscosity\" to disconnect \"Flashtalking\"'"
+alias vpn-on="sudo osascript -e 'tell application \"Viscosity\" to connect \"Flashtalking\"'"

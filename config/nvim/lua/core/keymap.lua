@@ -47,7 +47,10 @@ Map("n", "<TAB>", ":bn<CR>")
 Map("n", "<S-TAB>", ":bp<CR>")
 
 -- Window Nav
+Map("n", "<leader>w", "<C-w>")
 Map("n", "<leader>nw", "<C-w>v")
+
+
 
 -- map for quick open the file init.lua
 Map('n', '<leader>nv', ':vsplit ~/.config/nvim/init.lua<cr>')
