@@ -1,6 +1,6 @@
-return {
-  'nvim-lualine/lualine.nvim',
-  config = function()
+LUALINE_MODULE = {}
+
+LUALINE_MODULE.configure = function()
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -49,5 +49,7 @@ return {
       winbar = {},
       inactive_winbar = {},
     }
-  end,
-}
+  end
+
+return LUALINE_MODULE
+

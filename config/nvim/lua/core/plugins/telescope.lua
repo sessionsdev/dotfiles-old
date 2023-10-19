@@ -1,11 +1,13 @@
+TELESCOPE_MODULE = {}
+
 local file_browser = {
     -- theme = "ivy",
     layout_config = {
         horizontal = {
-        --   prompt_position = "top",
-          preview_width = 0.5,
+            --   prompt_position = "top",
+            preview_width = 0.5,
         },
-      },
+    },
     sorting_strategy = "ascending",
     -- disables netrw and use telescope-file-browser in its place
     hijack_netrw = true,
@@ -33,18 +35,19 @@ local fzf = {
     -- the default case_mode is "smart_case"
 }
 
-local function configTelescope()
+TELESCOPE_MODULE.configure = function()
     require("telescope").setup {
         defaults = {
             theme = "center",
             sorting_strategy = "ascending",
-            
-          },
+
+        },
 
         extensions = {
             file_browser = file_browser,
             fzf = fzf,
-        }
+        },
+        
     }
     -- To get telescope-file-browser loaded and working with telescope,
     -- you need to call load_extension, somewhere after setup function:
@@ -52,20 +55,6 @@ local function configTelescope()
     require("telescope").load_extension "fzf"
 end
 
+return TELESCOPE_MODULE
 
--- plugins/telescope.lua:
-return {
-    {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make',
-    },
-    {
-        "nvim-telescope/telescope-file-browser.nvim"
-    },
-    {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.3',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        config = configTelescope,
-    }
-}
+

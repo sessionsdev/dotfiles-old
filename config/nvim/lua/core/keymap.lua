@@ -1,85 +1,66 @@
-function Map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.keymap.set(mode, lhs, rhs, options)
-end
-
-local function toggle(option, silent)
-    vim.opt_local[option] = not vim.opt_local[option]:get()
-    if not silent then
-        vim.notify(
-            (vim.opt_local[option]:get() and "Enabled" or "Disabled") .. " " .. option,
-            vim.log.levels.INFO,
-            { title = "Option" }
-        )
-    end
-end
+local util = require('core.utilities')
+local Map = util.map
+local toggle = util.toggle_option
 
 -- Move lines
-Map("v", "J", ":m '>+1<CR>gv=gv")
-Map("v", "K", ":m '<-2<CR>gv=gv")
+util.map("v", "J", ":m '>+1<CR>gv=gv")
+util.map("v", "K", ":m '<-2<CR>gv=gv")
 
 --scrolling
-Map("n", "<C-d>", "<C-d>zz")
-Map("n", "<C-u>", "<C-u>zz")
-Map("n", "n", "nzzzv")
-Map("n", "N", "Nzzzv")
+util.map("n", "<C-d>", "<C-d>zz")
+util.map("n", "<C-u>", "<C-u>zz")
+util.map("n", "n", "nzzzv")
+util.map("n", "N", "Nzzzv")
 
 -- Copy to clipboard
-Map("v", "<leader>y", '"+y')
-Map("n", "<leader>Y", '"+yg_')
-Map("n", "<leader>y", '"+y')
-Map("n", "<leader>yy", '"+yy')
+util.map("v", "<leader>y", '"+y')
+util.map("n", "<leader>Y", '"+yg_')
+util.map("n", "<leader>y", '"+y')
+util.map("n", "<leader>yy", '"+yy')
 
 -- Paste from clipboard
-Map("n", "<leader>p", '"+p')
-Map("n", "<leader>P", '"+P')
-Map("v", "<leader>p", '"+p')
-Map("v", "<leader>P", '"+P')
-
-
--- Telescope/Fuzzy Finder Maps
-Map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
-Map("n", "<leader>pf", "<cmd> Telescope find_files <CR>")
-Map("n", "<C-p>", "<cmd> Telescope git_files <CR>")
-Map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-Map("n", "<leader>fs", "<cmd> Telescope live_grep <CR>")
-Map("n", "<leader><leader>", "<cmd> Telescope live_grep <CR>")
-Map("n", "<leader>o", "<cmd> Telescope buffers <CR>")
-Map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
-Map("n", "<leader>of", "<cmd> Telescope oldfiles <CR>")
-Map("n", "<leader>km", "<cmd> Telescope keymaps <CR>")
+util.map("n", "<leader>p", '"+p')
+util.map("n", "<leader>P", '"+P')
+util.map("v", "<leader>p", '"+p')
+util.map("v", "<leader>P", '"+P')
 
 -- Buffer nav
-Map("n", "<TAB>", ":bn<CR>")
-Map("n", "<S-TAB>", ":bp<CR>")
+util.map("n", "<TAB>", ":bn<CR>")
+util.map("n", "<S-TAB>", ":bp<CR>")
 
 -- Window Nav
-Map("n", "<leader>w", "<C-w>")
-Map("n", "<leader>nw", "<C-w>v")
+util.map("n", "<leader>w", "<C-w>")
+util.map("n", "<leader>nw", "<C-w>v")
 
 -- better indenting
-Map("v", "<", "<gv")
-Map("v", ">", ">gv")
+util.map("v", "<", "<gv")
+util.map("v", ">", ">gv")
 
 -- map for quick open the file init.lua
-Map('n', '<leader>nv', ':vsplit ~/.config/nvim/init.lua<cr>')
+util.map('n', '<leader>nv', ':vsplit ~/.config/nvim/init.lua<cr>')
 
 -- Toggle options
-Map("n", "<leader>tw", function() toggle("wrap") end, { desc = "Word Wrap" })
-
--- Undo tree
-Map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })
+util.map("n", "<leader>tw", function() toggle("wrap") end, { desc = "Word Wrap" })
 
 -- GIT
-Map("n", "<leader>gs", vim.cmd.Git)
+util.map("n", "<leader>gs", vim.cmd.Git)
+
+-- Telescope/Fuzzy Finder Maps
+util.map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
+util.map("n", "<leader>pf", "<cmd> Telescope find_files <CR>")
+util.map("n", "<C-p>", "<cmd> Telescope git_files <CR>")
+util.map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+util.map("n", "<leader>fs", "<cmd> Telescope live_grep <CR>")
+util.map("n", "<leader><leader>", "<cmd> Telescope live_grep <CR>")
+util.map("n", "<leader>o", "<cmd> Telescope buffers <CR>")
+util.map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
+util.map("n", "<leader>of", "<cmd> Telescope oldfiles <CR>")
+util.map("n", "<leader>km", "<cmd> Telescope keymaps <CR>")
 
 
--- Set the lsp keymaps
-local lsp_zero = require('lsp-zero')
-lsp_zero.on_attach(function(client, bufnr)
+-- LSP KeyMaps
+
+local lspZeroOnAttach = function(client, bufnr)
     local default_opts = { buffer = bufnr, remap = false }
 
     local function opts_with_desc(desc)
@@ -102,4 +83,11 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts_with_desc('LSP - Get code actions'))
     vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts_with_desc('LSP - Rename symbol'))
     vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, opts_with_desc('LSP - Format buffer'))
-end)
+end
+
+local lsp_zero = require('lsp-zero')
+lsp_zero.on_attach(lspZeroOnAttach)
+
+
+-- undo tree
+util.map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })

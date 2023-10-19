@@ -2,6 +2,8 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.extend_lspconfig()
 
 -- setup mason lspconfig and any custom handlers
+require('mason').setup({})
+
 require('mason-lspconfig').setup({
     ensure_installed = { 'jdtls' },
     handlers = {
