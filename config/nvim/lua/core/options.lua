@@ -38,7 +38,7 @@ opt.guicursor = ""
 -- appearance
 opt.termguicolors = true
 opt.background = "dark"
-opt.signcolumn = "no"
+opt.signcolumn = "yes"
 opt.colorcolumn = "80"
 opt.scrolloff = 10
 

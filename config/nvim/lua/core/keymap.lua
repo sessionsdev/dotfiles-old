@@ -1,6 +1,4 @@
 local util = require('core.utilities')
-local Map = util.map
-local toggle = util.toggle_option
 
 -- Move lines
 util.map("v", "J", ":m '>+1<CR>gv=gv")
@@ -40,13 +38,14 @@ util.map("v", ">", ">gv")
 util.map('n', '<leader>nv', ':vsplit ~/.config/nvim/init.lua<cr>')
 
 -- Toggle options
-util.map("n", "<leader>tw", function() toggle("wrap") end, { desc = "Word Wrap" })
+util.map("n", "<leader>tw", function() util.toggle_option("wrap") end, { desc = "Toggle Word Wrap" })
+util.map("n", "<leader>tln", function() util.toggle_option("number") util.toggle_option("relativenumber") end, { desc = "Toggle Line Numbers" })
 
 -- GIT
 util.map("n", "<leader>gs", vim.cmd.Git)
 
 -- Telescope/Fuzzy Finder Maps
-util.map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
+-- util.map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
 util.map("n", "<leader>pf", "<cmd> Telescope find_files <CR>")
 util.map("n", "<C-p>", "<cmd> Telescope git_files <CR>")
 util.map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
@@ -56,6 +55,9 @@ util.map("n", "<leader>o", "<cmd> Telescope buffers <CR>")
 util.map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
 util.map("n", "<leader>of", "<cmd> Telescope oldfiles <CR>")
 util.map("n", "<leader>km", "<cmd> Telescope keymaps <CR>")
+
+-- Oil
+util.map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 
 -- LSP KeyMaps

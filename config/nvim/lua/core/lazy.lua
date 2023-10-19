@@ -3,6 +3,12 @@ local plugins = {
   'nvim-lua/plenary.nvim',
 
   -- colorscheme
+  { 
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = require('core.plugins.catppuccin').configure
+  },
   "EdenEast/nightfox.nvim",
 
   -- treesitter
@@ -40,6 +46,9 @@ local plugins = {
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
   "nvim-telescope/telescope-file-browser.nvim",
   {'nvim-telescope/telescope.nvim', tag = '0.1.3', config = require('core.plugins.telescope').configure},
+
+  -- OIL
+  {'stevearc/oil.nvim', opts = {}, config = require('core.plugins.oil').configure},
 
   -- Obsidian and Wiki
   {"epwalsh/obsidian.nvim", opts = require('core.plugins.obsidian').opts},
