@@ -18,7 +18,7 @@ return {
   opts = {
     dir = vault_path, -- no need to call 'vim.fn.expand' here
 
-    open_notes_in = "hsplit",
+    open_notes_in = "vsplit",
     use_advanced_uri = true,
     templates = {
       subdir = "template",
