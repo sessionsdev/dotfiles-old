@@ -22,13 +22,17 @@ util.map("n", "<leader>P", '"+P')
 util.map("v", "<leader>p", '"+p')
 util.map("v", "<leader>P", '"+P')
 
--- Buffer nav
+-- Buffer
 util.map("n", "<TAB>", ":bn<CR>")
 util.map("n", "<S-TAB>", ":bp<CR>")
+util.map("n", "<leader>q", ":bd<CR>")
+util.map("n", "<C-s>", ":update<CR>")
+util.map("i", "<C-s>", "<Esc> :w<CR>")
 
 -- Window Nav
 util.map("n", "<leader>w", "<C-w>")
-util.map("n", "<leader>nw", "<C-w>v")
+util.map("n", "<leader>wv", "<C-w>v")
+util.map("n", "<leader>ws", "<C-w>s")
 
 -- better indenting
 util.map("v", "<", "<gv")
@@ -45,19 +49,19 @@ util.map("n", "<leader>tln", function() util.toggle_option("number") util.toggle
 util.map("n", "<leader>gs", vim.cmd.Git)
 
 -- Telescope/Fuzzy Finder Maps
--- util.map("n", "<leader>fb", "<cmd> Telescope file_browser <CR>")
-util.map("n", "<leader>pf", "<cmd> Telescope find_files <CR>")
-util.map("n", "<C-p>", "<cmd> Telescope git_files <CR>")
-util.map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-util.map("n", "<leader>fs", "<cmd> Telescope live_grep <CR>")
-util.map("n", "<leader><leader>", "<cmd> Telescope live_grep <CR>")
-util.map("n", "<leader>o", "<cmd> Telescope buffers <CR>")
-util.map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
-util.map("n", "<leader>of", "<cmd> Telescope oldfiles <CR>")
-util.map("n", "<leader>km", "<cmd> Telescope keymaps <CR>")
+util.map("n", "<leader>ff", ":Telescope find_files <CR>")
+util.map("n", "<leader>fg", ":Telescope git_files <CR>")
+util.map("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+util.map("n", "<leader>fs", ":Telescope live_grep <CR>")
+util.map("n", "<leader>fb", ":Telescope buffers <CR>")
+util.map("n", "<leader>fh", ":Telescope help_tags <CR>")
+util.map("n", "<leader>fk", ":Telescope keymaps <CR>")
+
+-- Obsidian
+util.map("n", "<leader>aa", ":ObsidianQuickSwitch <CR>")
 
 -- Oil
-util.map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+util.map("n", "-", ":Oil <CR>", { desc = "Open parent directory" })
 
 
 -- LSP KeyMaps

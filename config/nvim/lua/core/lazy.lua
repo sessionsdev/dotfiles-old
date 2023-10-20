@@ -52,7 +52,7 @@ local plugins = {
 
   -- Obsidian and Wiki
   {"epwalsh/obsidian.nvim", opts = require('core.plugins.obsidian').opts},
-  {'vimwiki/vimwiki', init = require('core.plugins.vimwiki').initialize},
+--  {'vimwiki/vimwiki', init = require('core.plugins.vimwiki').initialize},
 
   --undo tree
   'mbbill/undotree',
