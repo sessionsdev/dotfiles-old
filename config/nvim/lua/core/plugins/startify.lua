@@ -1,7 +1,7 @@
 M = {}
 
 M.initialize = function()
-    local vault_path = vim.fn.getenv("OBSIDIAN_VAULT_PATH")
+    local vault_path = vim.fn.getenv("ARCA_PATH")
     local g = vim.g
 
 

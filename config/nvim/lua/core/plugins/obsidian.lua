@@ -7,7 +7,7 @@
 --    "BufNewFile /home/sessionsdev/Documents/arca/**.md",
 --  },
 
-local vault_path = vim.fn.getenv("OBSIDIAN_VAULT_PATH")
+local vault_path = vim.fn.getenv("ARCA_PATH")
 
 OBSIDIAN_MODULE = {}
 

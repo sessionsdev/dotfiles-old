@@ -43,7 +43,7 @@ local plugins = {
     { "nvim-lualine/lualine.nvim", config = require('core.plugins.lualine').configure },
 
     -- Telescope
-    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     "nvim-telescope/telescope-file-browser.nvim",
     { 'nvim-telescope/telescope.nvim', tag = '0.1.3', config = require('core.plugins.telescope').configure },
 
@@ -52,6 +52,11 @@ local plugins = {
 
     -- Obsidian and Wiki
     { "epwalsh/obsidian.nvim", opts = require('core.plugins.obsidian').opts },
+    {
+        'lervag/wiki.vim', 
+        init = require('core.plugins.wiki-vim').initialize,
+        config = require('core.plugins.wiki-vim').configure,
+    },
 
     --undo tree
     'mbbill/undotree',

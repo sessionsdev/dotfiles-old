@@ -1,5 +1,6 @@
 local lsp_zero = require('lsp-zero')
 lsp_zero.extend_lspconfig()
+lsp_zero.on_attach(require('core.keymap').map_lsp_zero_keys)
 
 -- setup mason lspconfig and any custom handlers
 require('mason').setup({})

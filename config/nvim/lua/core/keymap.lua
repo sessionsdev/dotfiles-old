@@ -57,16 +57,24 @@ util.map("n", "<leader>fb", ":Telescope buffers <CR>")
 util.map("n", "<leader>fh", ":Telescope help_tags <CR>")
 util.map("n", "<leader>fk", ":Telescope keymaps <CR>")
 
--- Obsidian
-util.map("n", "<leader>aa", ":ObsidianQuickSwitch <CR>")
+-- Arca
+util.map("n", "<leader>a", ":WikiIndex <CR>")
+util.map("n", "<leader>ij", ":WikiJournal <CR>")
+
+
 
 -- Oil
 util.map("n", "-", ":Oil <CR>", { desc = "Open parent directory" })
 
 
--- LSP KeyMaps
+-- undo tree
+util.map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })
 
-local lspZeroOnAttach = function(client, bufnr)
+
+EXPORTED_KEYMAPS = {}
+
+-- LSP KeyMaps
+EXPORTED_KEYMAPS.map_lsp_zero_keys = function(client, bufnr)
     local default_opts = { buffer = bufnr, remap = false }
 
     local function opts_with_desc(desc)
@@ -91,9 +99,13 @@ local lspZeroOnAttach = function(client, bufnr)
     vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, opts_with_desc('LSP - Format buffer'))
 end
 
-local lsp_zero = require('lsp-zero')
-lsp_zero.on_attach(lspZeroOnAttach)
+EXPORTED_KEYMAPS.map_wiki_keys = function()
+    local opts = { buffer = vim.api.nvim_get_current_buf() }
+    vim.keymap.set('n', '<leader>ag', ':WikiLinkFollow <CR>', opts)
+    vim.keymap.set('n', '<S-Tab>', ':WikiLinkNext <CR>', opts)
+    vim.keymap.set('n', '<CR>', ':WikiLinkFollow <CR>', opts)
+end
 
 
--- undo tree
-util.map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })
+
+return EXPORTED_KEYMAPS
