@@ -47,6 +47,8 @@ symlink_file "$DOTFILES_DIR/.env" "$HOME/.env"
 # Symlink nvim config
 symlink_file "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
 
+symlink_file "$DOTFILES_DIR/config/jrnl" "$HOME/.config/jrnl"
+
 # Symlink .tmux.conf
 symlink_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 
