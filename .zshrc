@@ -14,6 +14,7 @@ eval "$(direnv hook zsh)"
 #### ZSH ####
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="random"
+ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "gnzh" "sunrise" )
 HIST_STAMPS="yyyy-mm-dd"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
