@@ -10,7 +10,7 @@ encrypt: false
 highlight: true
 indent_character: '|'
 journals:
-  default: /home/sessionsdev/git/arca/journal.md
+  default: ~/git/arca/journal.md
 linewrap: 79
 tagsymbols: '#@'
 template: false
