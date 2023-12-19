@@ -19,7 +19,7 @@ OBSIDIAN_MODULE.opts = function()
         use_advanced_uri = true,
         templates = {
             subdir = "template",
-            date_format = "%Y-%m-%d",
+            date_format = "%Y-%m-%d %A",
             time_format = "%H:%M",
             -- A map for custom variables, the key should be the variable and the value a function
             substitutions = {}

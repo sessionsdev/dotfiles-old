@@ -50,13 +50,8 @@ local plugins = {
     -- OIL
     { 'stevearc/oil.nvim', opts = {}, config = require('core.plugins.oil').configure },
 
-    -- Obsidian and Wiki
+    -- Obsidian 
     { "epwalsh/obsidian.nvim", opts = require('core.plugins.obsidian').opts },
-    {
-        'lervag/wiki.vim', 
-        init = require('core.plugins.wiki-vim').initialize,
-        config = require('core.plugins.wiki-vim').configure,
-    },
 
     --undo tree
     'mbbill/undotree',

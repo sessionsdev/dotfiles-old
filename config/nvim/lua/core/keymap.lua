@@ -58,10 +58,8 @@ util.map("n", "<leader>fh", ":Telescope help_tags <CR>")
 util.map("n", "<leader>fk", ":Telescope keymaps <CR>")
 
 -- Arca
-util.map("n", "<leader>a", ":WikiIndex <CR>")
-util.map("n", "<leader>ij", ":WikiJournal <CR>")
-
-
+-- util.map("n", "<leader>a", ":WikiIndex <CR>")
+-- util.map("n", "<leader>ij", ":WikiJournal <CR>")
 
 -- Oil
 util.map("n", "-", ":Oil <CR>", { desc = "Open parent directory" })
