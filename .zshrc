@@ -62,3 +62,6 @@ export JAVA_HOME
 if [ -d "$GIT_HOME/voxsupFrontend2" ]; then
     alias vox="$GIT_HOME/voxsupFrontend2/.vox"
 fi
+
+# opam configuration
+[[ ! -r /home/sessionsdev/.opam/opam-init/init.zsh ]] || source /home/sessionsdev/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
