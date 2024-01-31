@@ -97,12 +97,6 @@ EXPORTED_KEYMAPS.map_lsp_zero_keys = function(client, bufnr)
     vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, opts_with_desc('LSP - Format buffer'))
 end
 
-EXPORTED_KEYMAPS.map_wiki_keys = function()
-    local opts = { buffer = vim.api.nvim_get_current_buf() }
-    vim.keymap.set('n', '<leader>ag', ':WikiLinkFollow <CR>', opts)
-    vim.keymap.set('n', '<S-Tab>', ':WikiLinkNext <CR>', opts)
-    vim.keymap.set('n', '<CR>', ':WikiLinkFollow <CR>', opts)
-end
 
 
 

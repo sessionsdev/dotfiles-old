@@ -51,7 +51,7 @@ local plugins = {
     { 'stevearc/oil.nvim', opts = {}, config = require('core.plugins.oil').configure },
 
     -- Obsidian 
-    { "epwalsh/obsidian.nvim", opts = require('core.plugins.obsidian').opts },
+    -- { "epwalsh/obsidian.nvim", opts = require('core.plugins.obsidian').opts },
 
     --undo tree
     'mbbill/undotree',
