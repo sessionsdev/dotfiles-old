@@ -54,3 +54,6 @@ opt.updatetime = 50
 -- netrw_banner
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
+
+
+vim.g.copilot_assume_mapped = true

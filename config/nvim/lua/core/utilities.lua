@@ -42,20 +42,4 @@ M.set_os_globals = function()
     end
 end
 
-M.get_knowledge_vault_path = function()
-    local vault_path = vim.fn.getenv("OBSIDIAN_VAULT_PATH")
-    if vault_path == "" or vault_path == nil then
-    print("Vault Path Is Null")
-        return "./arca"
-    end
-
-    local is_dir = vim.fn.is_dir(vault_path)
-    if is_dir == 1 then
-        print("VAULT_PATH: " .. vault_path)
-        return vault_path
-    end
-
-    return "./arca"
-end
-
 return M
